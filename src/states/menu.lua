@@ -1,5 +1,6 @@
 local menu = {}
 local menuProperties = {}
+menuProperties.titleMusicVolume = 1
 menuProperties.titleFadeInTime = 2.6
 menuProperties.loaded = false
 menuProperties.showCredits = false
@@ -20,6 +21,7 @@ menuProperties.options = {
     option = true,
     hover = false,
     click = function ()
+      Timer.tween(menuProperties.fadeOutTime, menuProperties, { titleMusicVolume = 0 }, 'out-quad', function() titleMusic:stop() end)
       Timer.tween(menuProperties.fadeOutTime, menuProperties, { titleAlpha = 0, optionAlpha = 0 }, 'out-quad', function() Gamestate.switch(gameGamestate) end)
     end
   },
@@ -120,6 +122,7 @@ function menu:draw()
 end
 
 function menu:update(dt)
+  titleMusic:setVolume(menuProperties.titleMusicVolume)
   if (menuProperties.loaded) then
     local mouseX, mouseY = love.mouse.getPosition()
     if (not menuProperties.showCredits) then

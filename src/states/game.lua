@@ -1,30 +1,40 @@
-local game = {}
-local clickEvent = require 'src.libs.clickEvent'
--- clickEvent:start(func) to start a click event
+local sceneHandler = require 'src.libs.sceneHandler'
 
-local titleVolume = 1 --scale the title music volume down when the game state is entered until it is low
+local game = {}
 
 function game:init()
   love.graphics.setBackgroundColor(13/255, 13/255, 13/255)
 end
 
+function game:enter()
+  sceneHandler.scenes.intro:init()
+end
+
 function game:draw()
+  -- draw the scene first, then the UI
+  sceneHandler.scenes[sceneHandler.currentScene]:draw()
   clickEvent:draw()
+  keyTip:draw()
 end
 
 function game:update(dt)
+  -- Update scene
+  sceneHandler.scenes[sceneHandler.currentScene]:update(dt)
+
   -- Update libraries
   clickEvent:update(dt)
-
-  if (titleVolume >= 0.2) then
-    titleVolume = titleVolume - (dt / 2)
-    titleMusic:setVolume(titleVolume)
-  end
+  keyTip:update(dt)
 end
 
 
 function game:mousepressed(x, y, button)
+  sceneHandler.scenes[sceneHandler.currentScene]:mousepressed(x, y, button)
   clickEvent:mousepressed(x, y, button)
+end
+
+function game:keypressed(key)
+  sceneHandler.scenes[sceneHandler.currentScene]:keypressed(key)
+  keyTip:keypressed(key)
 end
 
 return game

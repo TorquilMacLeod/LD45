@@ -52,7 +52,6 @@ local splashProperties = {}
 splashProperties.totalSpinLength = 4.8
 splashProperties.totalFadeLength = 2.4
 splashProperties.backgroundImage = love.graphics.newImage('assets/splash/graphics/background.png')
-splashProperties.cardSound = love.audio.newSource('assets/splash/audio/card.wav', 'static')
 
 function splash:init()
   love.graphics.setBackgroundColor(13/255, 13/255, 13/255)

@@ -2,7 +2,8 @@ local clickEvent = {
   active = false,
   currentValue = 0,
   completed = false,
-  completeFunc = function () end
+  completeFunc = function () end,
+  difficulty = 1
 }
 
 local clickEventHelper = love.graphics.newImage('assets/game/graphics/UI/clickEventHelper.png')
@@ -19,15 +20,17 @@ local arcRadius = 55
 local innerRadius = 46
 
 local startAngle = (-0.5 * math.pi)
-local centerX, centerY = (love.graphics.getWidth()/2 - outerRadius), (love.graphics.getHeight() - (outerRadius * 3))
+local centerX, centerY = (love.graphics.getWidth()/2), (love.graphics.getHeight() - (outerRadius * 3))
 
 local arcColor = {0.3, 0.3, 0.3, 1}
 local arcFadeColor = {0.3, 0.3, 0.3, 0}
 local arcFadeTime = 0.3
 
-local completeSound = love.audio.newSource('assets/game/audio/effects/completeClickEvent.wav', 'static')
+local completeSound = love.audio.newSource('assets/game/audio/effects/UIEvent.wav', 'static')
 
-function clickEvent:start(completeFunc)
+function clickEvent:start(completeFunc, difficulty)
+  self.difficulty = difficulty or 1
+  self.completed = false
   self.active = true
   self.completeFunc = completeFunc
 end
@@ -47,7 +50,7 @@ end
 
 function clickEvent:mousepressed(x, y, button)
   if (not self.completed and self.active) then
-    self.currentValue = self.currentValue + 0.2
+    self.currentValue = self.currentValue + (0.2 * self.difficulty)
     if (self.currentValue > 1) then
       self.completed = true
       Timer.tween(arcFadeTime, arcColor, {0.4, 0.4, 0.8}, 'in-quint', clickEvent.complete)
