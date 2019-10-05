@@ -20,7 +20,7 @@ menuProperties.options = {
     option = true,
     hover = false,
     click = function ()
-      Timer.tween(menuProperties.fadeOutTime, menuProperties, { titleAlpha = 0, optionAlpha = 0 }, 'out-quad', function() Gamestate.switch(game) end)
+      Timer.tween(menuProperties.fadeOutTime, menuProperties, { titleAlpha = 0, optionAlpha = 0 }, 'out-quad', function() Gamestate.switch(gameGamestate) end)
     end
   },
   {
