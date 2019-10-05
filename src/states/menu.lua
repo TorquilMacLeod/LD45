@@ -8,7 +8,7 @@ menuProperties.optionFadeInTime = 4
 menuProperties.fadeOutTime = 2.6
 menuProperties.titleAlpha = 0
 menuProperties.optionAlpha = 0
-menuProperties.titleFont = love.graphics.newFont('assets/menu/fonts/Roboto-BoldItalic.ttf', 144)
+menuProperties.titleFont = love.graphics.newFont('assets/menu/fonts/Roboto-BoldItalic.ttf', 206)
 menuProperties.titleFontHeight = menuProperties.titleFont:getHeight()
 menuProperties.optionFont = love.graphics.newFont('assets/menu/fonts/SpaceMono-Bold.ttf', 36)
 menuProperties.optionFontHeight = menuProperties.optionFont:getHeight()
@@ -17,7 +17,7 @@ menuProperties.options = {
   {
     text = "Start",
     x = 140,
-    y = 160 + (menuProperties.titleFontHeight * 2),
+    y = 160 + (menuProperties.titleFontHeight),
     option = true,
     hover = false,
     click = function ()
@@ -28,7 +28,7 @@ menuProperties.options = {
   {
     text = "Credits",
     x = 140,
-    y = 170 + (menuProperties.titleFontHeight * 2) + menuProperties.optionFontHeight,
+    y = 170 + (menuProperties.titleFontHeight) + menuProperties.optionFontHeight,
     option = true,
     hover = false,
     click = function ()
@@ -38,7 +38,7 @@ menuProperties.options = {
   {
     text = "Quit Game",
     x = 140,
-    y = 180 + (menuProperties.titleFontHeight * 2) + (menuProperties.optionFontHeight * 2),
+    y = 180 + (menuProperties.titleFontHeight) + (menuProperties.optionFontHeight * 2),
     option = true,
     hover = false,
     click = function ()
@@ -51,7 +51,7 @@ menuProperties.creditOptions = {
   {
     text = "Music by Arda Güler",
     x = 140,
-    y = 160 + (menuProperties.titleFontHeight * 2),
+    y = 160 + (menuProperties.titleFontHeight),
     option = false,
     hover = false,
     click = function ()
@@ -60,7 +60,7 @@ menuProperties.creditOptions = {
   {
     text = "Fonts from Google Fonts",
     x = 140,
-    y = 170 + (menuProperties.titleFontHeight * 2) + menuProperties.optionFontHeight,
+    y = 170 + (menuProperties.titleFontHeight) + menuProperties.optionFontHeight,
     option = false,
     hover = false,
     click = function ()
@@ -69,7 +69,7 @@ menuProperties.creditOptions = {
   {
     text = "Back",
     x = 140,
-    y = 380 + (menuProperties.titleFontHeight * 2) + (menuProperties.optionFontHeight * 2),
+    y = 380 + (menuProperties.titleFontHeight) + (menuProperties.optionFontHeight * 2),
     option = true,
     hover = false,
     click = function ()

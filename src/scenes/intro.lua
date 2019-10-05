@@ -13,7 +13,7 @@ local intro = {
   allowWalking = false,
   walking = false,
   walkedDist = 0,
-  walkDist = 6
+  walkDist = 4
 }
 
 for k, v in pairs(intro.dialogue) do
@@ -50,9 +50,6 @@ function intro:keypressed(key)
 end
 
 function intro:keyreleased(key)
-  if (key == "w") then
-    intro.walking = false
-  end
 end
 
 function intro:complete()
@@ -69,7 +66,8 @@ end
 function intro:reachedDoor()
   intro.dialogue.AI_doorReached.source:play()
   Timer.after(intro.dialogue.AI_doorReached.delay, function ()
-    sceneHandler.goToScene("core")
+    atmosphericBackgroundNoise:play()
+    sceneHandler:goToScene("keypad")
   end)
 end
 

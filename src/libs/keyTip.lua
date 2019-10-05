@@ -3,8 +3,14 @@ local keyTip = {
     w = {
       active = false,
       complete = false,
-      deactivateKey = "w",
+      deactivateKey = {w = true},
       image = love.graphics.newImage('assets/game/graphics/UI/wTip.png')
+    },
+    wasd = {
+      active = false,
+      complete = false,
+      deactivateKey = {w = true, a = true, s = true, d = true},
+      image = love.graphics.newImage('assets/game/graphics/UI/wasdTip.png')
     }
   },
   tipPositionX = 40,
@@ -37,7 +43,7 @@ end
 function keyTip:keypressed(key)
   if (keyTip.tipType) then
     if (keyTip.tips[keyTip.tipType].active and not keyTip.tips[keyTip.tipType].complete) then
-      if (key == keyTip.tips[keyTip.tipType].deactivateKey) then
+      if (keyTip.tips[keyTip.tipType].deactivateKey[key] == true) then
         keyTip.tips[keyTip.tipType].complete = true
         keyTip.tipSound:play()
         Timer.tween(keyTip.tipSatisfyTime, keyTip.tipColor, keyTip.tipSatisfiedColor, 'in-quint')
@@ -45,6 +51,9 @@ function keyTip:keypressed(key)
       end
     end
   end
+end
+
+function keyTip:keyreleased(key)
 end
 
 function keyTip:update(dt)

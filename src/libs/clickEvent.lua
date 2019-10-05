@@ -20,7 +20,7 @@ local arcRadius = 55
 local innerRadius = 46
 
 local startAngle = (-0.5 * math.pi)
-local centerX, centerY = (love.graphics.getWidth()/2), (love.graphics.getHeight() - (outerRadius * 3))
+local centerX, centerY = (love.graphics.getWidth()/2), (love.graphics.getHeight() - (outerRadius * 2))
 
 local arcColor = {0.3, 0.3, 0.3, 1}
 local arcFadeColor = {0.3, 0.3, 0.3, 0}

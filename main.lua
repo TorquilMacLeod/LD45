@@ -21,8 +21,8 @@ titleMusic:setVolume(0.7)
 
 function love.load()
   Gamestate.registerEvents()
-  Gamestate.switch(splashGamestate)
-  love.audio.play(titleMusic)
+  Gamestate.switch(gameGamestate) -- DEBUG
+  -- love.audio.play(titleMusic) DEBUG
 end
 
 function love.draw()
