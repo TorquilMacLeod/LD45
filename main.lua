@@ -1,7 +1,7 @@
 Gamestate = require "libs.hump.gamestate"
 Timer = require "libs.hump.timer"
-menuGamestate = require "src.states.menu"
 splashGamestate = require "src.states.splash"
+menuGamestate = require "src.states.menu"
 
 function love.load()
   Gamestate.registerEvents()
