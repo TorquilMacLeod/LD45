@@ -34,7 +34,7 @@ local cardThreeProperties = {}
 cardThreeProperties.cardSpinEndX = (love.graphics.getWidth()/2) - 40
 cardThreeProperties.cardSpinEndY = (love.graphics.getHeight()/2) + 100
 cardThreeProperties.cardSpinEndScale = 0.4
-cardThreeProperties.cardSpinEndRot = 62
+cardThreeProperties.cardSpinEndRot = -62
 cardThreeProperties.cardSpinLength = 4.8
 cardThreeProperties.cardX = (love.graphics.getWidth()/2) + 270
 cardThreeProperties.cardY = (love.graphics.getHeight()/2) - 220
@@ -50,32 +50,28 @@ fadeProperties.alpha = 0
 
 local splashProperties = {}
 splashProperties.totalSpinLength = 4.8
-splashProperties.totalFadeLength = 0.8
-splashProperties.introSound = love.audio.newSource('assets/splash/audio/intro.wav', 'static')
+splashProperties.totalFadeLength = 2.4
+splashProperties.backgroundImage = love.graphics.newImage('assets/splash/graphics/background.png')
 splashProperties.cardSound = love.audio.newSource('assets/splash/audio/card.wav', 'static')
 
 function splash:init()
+  love.graphics.setBackgroundColor(13/255, 13/255, 13/255)
+
   Timer.tween(cardOneProperties.cardSpinLength, cardOneProperties, { cardScale = cardOneProperties.cardSpinEndScale }, 'out-quad')
   Timer.tween(cardOneProperties.cardSpinLength, cardOneProperties, { cardRot = cardOneProperties.cardSpinEndRot }, 'linear')
   Timer.tween(cardOneProperties.cardSpinLength, cardOneProperties, { cardY = cardOneProperties.cardSpinEndY }, 'out-in-back')
-  Timer.tween(cardOneProperties.cardSpinLength, cardOneProperties, { cardX = cardOneProperties.cardSpinEndX }, 'in-out-quart', splash.cardLand)
+  Timer.tween(cardOneProperties.cardSpinLength, cardOneProperties, { cardX = cardOneProperties.cardSpinEndX }, 'in-out-quart')
 
   Timer.tween(cardTwoProperties.cardSpinLength, cardTwoProperties, { cardScale = cardTwoProperties.cardSpinEndScale }, 'out-quad')
   Timer.tween(cardTwoProperties.cardSpinLength, cardTwoProperties, { cardRot = cardTwoProperties.cardSpinEndRot }, 'linear')
   Timer.tween(cardTwoProperties.cardSpinLength, cardTwoProperties, { cardY = cardTwoProperties.cardSpinEndY }, 'out-in-back')
-  Timer.tween(cardTwoProperties.cardSpinLength, cardTwoProperties, { cardX = cardTwoProperties.cardSpinEndX }, 'in-out-quart', splash.cardLand)
+  Timer.tween(cardTwoProperties.cardSpinLength, cardTwoProperties, { cardX = cardTwoProperties.cardSpinEndX }, 'in-out-quart')
 
   Timer.tween(cardThreeProperties.cardSpinLength, cardThreeProperties, { cardScale = cardThreeProperties.cardSpinEndScale }, 'out-quad')
   Timer.tween(cardThreeProperties.cardSpinLength, cardThreeProperties, { cardRot = cardThreeProperties.cardSpinEndRot }, 'linear')
   Timer.tween(cardThreeProperties.cardSpinLength, cardThreeProperties, { cardY = cardThreeProperties.cardSpinEndY }, 'out-in-back')
-  Timer.tween(cardThreeProperties.cardSpinLength, cardThreeProperties, { cardX = cardThreeProperties.cardSpinEndX }, 'in-out-quart', splash.cardLand)
+  Timer.tween(cardThreeProperties.cardSpinLength, cardThreeProperties, { cardX = cardThreeProperties.cardSpinEndX }, 'in-out-quart')
   Timer.after(splashProperties.totalSpinLength + 1, splash.fadeOut)
-
-  love.audio.play(splashProperties.introSound)
-end
-
-function splash:cardLand()
-  love.audio.play(splashProperties.cardSound)
 end
 
 function splash:fadeOut()
@@ -87,12 +83,12 @@ function splash:moveToMenu()
 end
 
 function splash:draw()
-  love.graphics.setBackgroundColor(240/255, 240/255, 240/255)
   love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.draw(splashProperties.backgroundImage, 0, 0)
   love.graphics.draw(cardOneProperties.cardImage, cardOneProperties.cardX, cardOneProperties.cardY, cardOneProperties.cardRot, cardOneProperties.cardScale, cardOneProperties.cardScale, cardOneProperties.cardOriginX, cardOneProperties.cardOriginY)
   love.graphics.draw(cardTwoProperties.cardImage, cardTwoProperties.cardX, cardTwoProperties.cardY, cardTwoProperties.cardRot, cardTwoProperties.cardScale, cardTwoProperties.cardScale, cardTwoProperties.cardOriginX, cardTwoProperties.cardOriginY)
   love.graphics.draw(cardThreeProperties.cardImage, cardThreeProperties.cardX, cardThreeProperties.cardY, cardThreeProperties.cardRot, cardThreeProperties.cardScale, cardThreeProperties.cardScale, cardThreeProperties.cardOriginX, cardThreeProperties.cardOriginY)
-  love.graphics.setColor(240/255, 240/255, 240/255, fadeProperties.alpha)
+  love.graphics.setColor(13/255, 13/255, 13/255, fadeProperties.alpha)
   love.graphics.rectangle('fill', 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 end
 
