@@ -67,6 +67,15 @@ menuProperties.creditOptions = {
     end
   },
   {
+    text = "Various Sound Effects from freesound.org",
+    x = 140,
+    y = 180 + (menuProperties.titleFontHeight) + (menuProperties.optionFontHeight * 2),
+    option = false,
+    hover = false,
+    click = function ()
+    end
+  },
+  {
     text = "Back",
     x = 140,
     y = 380 + (menuProperties.titleFontHeight) + (menuProperties.optionFontHeight * 2),

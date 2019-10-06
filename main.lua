@@ -3,6 +3,9 @@ lume = require 'src.libs.lume.lume'
 Gamestate = require 'src.libs.hump.gamestate'
 Timer = require 'src.libs.hump.timer'
 Signal = require 'src.libs.hump.signal'
+Camera = require 'src.libs.hump.camera'
+
+DEBUG_FLAG = true
 
 -- Custom libs
 clickEvent = require 'src.libs.clickEvent'
@@ -22,7 +25,7 @@ titleMusic:setVolume(0.7)
 function love.load()
   Gamestate.registerEvents()
   Gamestate.switch(gameGamestate) -- DEBUG
-  -- love.audio.play(titleMusic) DEBUG
+  -- love.audio.play(titleMusic) -- DEBUG
 end
 
 function love.draw()

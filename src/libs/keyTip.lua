@@ -6,6 +6,12 @@ local keyTip = {
       deactivateKey = {w = true},
       image = love.graphics.newImage('assets/game/graphics/UI/wTip.png')
     },
+    e = {
+      active = false,
+      complete = false,
+      deactivateKey = {e = true},
+      image = love.graphics.newImage('assets/game/graphics/UI/eTip.png')
+    },
     wasd = {
       active = false,
       complete = false,
@@ -28,7 +34,6 @@ function keyTip:start(tipType)
   keyTip.tipType = tipType
   keyTip.tips[tipType].active = true
   keyTip.tipOriginY = keyTip.tips[keyTip.tipType].image:getHeight()
-  print("started with tipType: ", tipType)
 end
 
 function keyTip:draw()
