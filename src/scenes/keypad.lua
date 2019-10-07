@@ -45,52 +45,6 @@ function keypad:update(dt)
 end
 
 function keypad:mousepressed(x, y, button)
-  -- local halfScreenWidth, halfScreenHeight = love.graphics.getWidth()/2, love.graphics.getHeight()/2
-  -- if (keypad.atKeypad) then
-  --   local pressed = false
-  --   if (helperLib.isInside(x, y, halfScreenWidth - 105, halfScreenHeight - 105, halfScreenWidth - 45, halfScreenHeight - 45)) then
-  --     keypad.currentCode = keypad.currentCode .. "1"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth - 30, halfScreenHeight - 105, halfScreenWidth + 30, halfScreenHeight - 45)) then
-  --     keypad.currentCode = keypad.currentCode .. "2"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth + 45, halfScreenHeight - 105, halfScreenWidth + 105, halfScreenHeight - 45)) then
-  --     keypad.currentCode = keypad.currentCode .. "3"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth - 105, halfScreenHeight - 30, halfScreenWidth - 45, halfScreenHeight + 30)) then
-  --     keypad.currentCode = keypad.currentCode .. "4"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth - 30, halfScreenHeight - 30, halfScreenWidth + 30, halfScreenHeight + 30)) then
-  --     keypad.currentCode = keypad.currentCode .. "5"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth + 45, halfScreenHeight - 30, halfScreenWidth + 105, halfScreenHeight + 30)) then
-  --     keypad.currentCode = keypad.currentCode .. "6"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth - 105, halfScreenHeight + 45, halfScreenWidth - 45, halfScreenHeight + 105)) then
-  --     keypad.currentCode = keypad.currentCode .. "7"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth - 30, halfScreenHeight + 45, halfScreenWidth + 30, halfScreenHeight + 105)) then
-  --     keypad.currentCode = keypad.currentCode .. "8"
-  --     pressed = true
-  --   elseif (helperLib.isInside(x, y, halfScreenWidth + 45, halfScreenHeight + 45, halfScreenWidth + 105, halfScreenHeight + 105)) then
-  --     keypad.currentCode = keypad.currentCode .. "9"
-  --     pressed = true
-  --   end
-  --   if (pressed) then
-  --     if (keypad.currentCode:len() >= 4) then
-  --       if (keypad.currentCode == keypad.code) then
-  --         keypad.atKeypad = false
-  --         keypad.correctCodeSound:play()
-  --         Timer.after(keypad.correctCodeSound:getDuration('seconds')/2, function () keypad.doorOpened() end)
-  --       else
-  --         keypad.incorrectCodeSound:play()
-  --         keypad.currentCode = ""
-  --       end
-  --     else 
-  --       keypad.keypressSound:play()
-  --     end
-  --   end
-  -- end
 end
 
 function keypad:keypressed(key)

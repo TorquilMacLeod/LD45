@@ -23,7 +23,7 @@ local core = {
     playerX = 0,
     playerY = 0,
     playerSpeed = 100,
-    playerSize = 15,
+    playerSize = 10,
     movementKeys = {w = true, a = true, s = true, d = true},
     allowClap = false,
     clapped = false,
@@ -43,6 +43,7 @@ for k, v in pairs(core.dialogue) do
 end
 
 function core:init()
+  levelDrawer:loadLevel('core')
   love.graphics.setFont(core.debugFont)
   self.dialogue.attack.source:play()
   Timer.after(self.dialogue.attack.hitFlashTime, function () core.punched() end)
@@ -63,10 +64,10 @@ function core:draw()
     love.graphics.print("s: " .. tostring(core.movement.direction.s), 10, 90)
     love.graphics.print("d: " .. tostring(core.movement.direction.d), 10, 110)
     core.movement.camera:attach()
+    levelDrawer:draw()
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.circle('line', core.movement.playerX, core.movement.playerY, core.movement.playerSize)
     core.movement.camera:detach()
-    
   end
 end
 
